@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "JUNNYLAND CAPTURE",
+  "description": "WEB PDF CAPTURE",
+  "version": "1.0",
+  "action": {
+    "default_popup": "setup.html",
+    "default_icon": "junnyland.png"
+  }
+}
