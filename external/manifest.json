@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "name": "JUNNYLAND CAPTURE",
+  "description": "WEB PDF CAPTURE",
+
+  "action": {
+    "default_title": "JUNNYLAND CAPTURE",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["js/content.js"]
+    }],
+
+  "background": {
+    "service_worker": "js/background.js"
+  },
+
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "tabs"
+  ]
+}
