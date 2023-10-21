@@ -1,17 +1,25 @@
 package io.git.captureboard;
 
 import java.lang.System.Logger;
+
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.robot.Robot;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -83,6 +91,30 @@ public class MainController {
             gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
             gc.strokeRect(xa, ya, xb - xa, yb - ya);
         });
+        Robot robot = new Robot();
+
+//        make WritableImage from BufferedImage
+        WritableImage writable = SwingFXUtils.toFXImage(robot.getScreenCapture(null, null), null);
+        WritableImage writable =
+
+        SwingFXUtils.toFXImage(robot.getScreenCapture(null, null), null);
+        robot.getScreenCapture()
+    }
+    static void snapshot(javafx.scene.Node node) {
+
+        Point2D point2D = node.localToScreen(0d, 0d);
+        ReadOnlyObjectProperty<Bounds> boundsReadOnlyObjectProperty = node.boundsInParentProperty();
+        boundsReadOnlyObjectProperty.addListener((observable, oldValue, newValue) -> {
+            System.out.println("oldValue = " + oldValue);
+            System.out.println("newValue = " + newValue);
+        });
+        def bi = robot.getScreenCapture(new Rectangle(point2D.getX(), point2D.getY(), node.getWidth(), node.getHeight()
+        def writableImage = SwingFXUtils.toFXImage(bi, null)
+        new Stage().with {
+            title = 'snapshot'
+            scene = new Scene(new Pane(new ImageView(writableImage)))
+            show()
+        }
     }
 
     @FXML
