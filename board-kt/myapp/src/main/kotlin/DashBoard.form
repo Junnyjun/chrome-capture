@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="DashBoard">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="175" y="189" width="583" height="212"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <hspacer id="950f4">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <scrollpane id="dac6f">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="156" height="106"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="f1a2f" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <background color="-13857852"/>
+              <text value="JUNNY LAND CAPTURE BOARD"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <scrollpane id="c6443">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </scrollpane>
+    </children>
+  </grid>
+</form>
