@@ -24,7 +24,7 @@ fun interface Capture {
 
             ImageIO.setUseCache(false)
             ImageIO.setCacheDirectory(null)
-            logger.info("[CAPTURE BOARD] WRITE :: $createScreenCapture")
+            logger.info("[CAPTURE BOARD] WRITE -> ${window.index}")
             val target = File("./target/${window.index}.png")
             target.parentFile.mkdirs()
 

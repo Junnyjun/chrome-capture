@@ -17,11 +17,12 @@ fun interface Parser {
             logger.info("[CONVERT] START")
 
             val targets = Paths.get("./target")
-            // v파일 목록 불러오기
             val files = targets.toFile().listFiles()!!
                 .sortedBy { it.nameWithoutExtension.toInt() }
+
             val pdfFile = File("./document/${request.fileName}.pdf")
             logger.info("[CONVERT] WRITE PDF")
+
             val document = Document(com.itextpdf.text.Rectangle(request.target.width.toFloat(), request.target.height.toFloat()))
             PdfWriter.getInstance(document, pdfFile.outputStream())
             document.open()
