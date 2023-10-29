@@ -1,18 +1,16 @@
-import java.awt.MouseInfo
-import java.awt.Rectangle
 import java.util.logging.Logger
-import javax.swing.SwingUtilities
 
 fun main() {
     System.setProperty("sun.java2d.uiScale.enabled", "false")
     System.setProperty("sun.java2d.uiScale", "1.0")
     val logger = Logger.getLogger("CAPTURE BOARD")
+    ClearPath.ClearPathUsecase().clear()
 
     val capture = Capture.CaptureUsecase()
 
-    val page = 516;
-    // 34는 pageDown
+    val page = 364;
     val nextPageKey:Int = 34
+    val fileName:String = "그림으로 공부하는 IT 인프라 구조"
 
 
     logger.info("[CAPTURE BOARD] 시작 3초전")
@@ -27,4 +25,6 @@ fun main() {
         capture.capture(request)
     }
 
+    Parser.ParserUsecase().convert(Parser.ParserSizer(fileName, sizer))
+//    ClearPath.ClearPathUsecase().clear()
 }
