@@ -12,6 +12,7 @@ fun interface Capture {
 
     ):Capture{
        private val logger = Logger.getLogger("CAPTURE BOARD")
+
         override fun capture(window: CaptureSizer): File {
             logger.info("[CAPTURE BOARD] REQUEST :: $window")
             val createScreenCapture = robot.createScreenCapture( window.target)
@@ -24,7 +25,9 @@ fun interface Capture {
             ImageIO.setUseCache(false)
             ImageIO.setCacheDirectory(null)
             logger.info("[CAPTURE BOARD] WRITE :: $createScreenCapture")
-            val target = File("${window.index}.png")
+            val target = File("./taget/${window.index}.png")
+            target.parentFile.mkdirs()
+
             ImageIO.write(createScreenCapture, "png", target)
             robot.keyPress(window.nextKey)
             logger.info("[CAPTURE BOARD] KEY PRESS :: ${window.nextKey}")

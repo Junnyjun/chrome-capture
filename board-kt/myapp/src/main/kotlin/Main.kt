@@ -1,27 +1,30 @@
-import java.awt.Image
+import java.awt.MouseInfo
 import java.awt.Rectangle
-import java.awt.Robot
-import java.io.File
-import javax.imageio.ImageIO
+import java.util.logging.Logger
+import javax.swing.SwingUtilities
 
-fun main(args: Array<String>) {
+fun main() {
     System.setProperty("sun.java2d.uiScale.enabled", "false")
     System.setProperty("sun.java2d.uiScale", "1.0")
+    val logger = Logger.getLogger("CAPTURE BOARD")
 
-    val target = File("${System.currentTimeMillis()}.png")
-    val robot = Robot()
+    val capture = Capture.CaptureUsecase()
 
-    val sizer = Rectangle(0, 0, 2000, 1000);
-    val createScreenCapture = robot.createScreenCapture(sizer)
+    val page = 516;
+    // 34는 pageDown
+    val nextPageKey:Int = 34
 
-    val createGraphics = createScreenCapture.createGraphics()
-    createGraphics.drawImage(createScreenCapture, 0, 0, null)
-    createGraphics.dispose()
 
-    ImageIO.setUseCache(false)
-    ImageIO.setCacheDirectory(null)
+    logger.info("[CAPTURE BOARD] 시작 3초전")
+    logger.info("캡쳐할 대상( APP, 페이지)를 클릭(활성) 상태로 놔주세요")
+    Thread.sleep(2000)
 
-    val write = ImageIO.write(createScreenCapture, "png", target)
-    println("robot = ${robot}")
+    val sizer = Sizer.SizerUsecase().size()
+
+    repeat(page){ index ->
+        Thread.sleep(200)
+        val request = Capture.CaptureSizer("$index", nextPageKey, sizer)
+        capture.capture(request)
+    }
 
 }
