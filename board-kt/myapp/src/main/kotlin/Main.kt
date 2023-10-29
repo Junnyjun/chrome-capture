@@ -1,21 +1,27 @@
+import java.awt.Image
 import java.awt.Rectangle
 import java.awt.Robot
 import java.io.File
 import javax.imageio.ImageIO
 
 fun main(args: Array<String>) {
-    println("Hello World!")
+    System.setProperty("sun.java2d.uiScale.enabled", "false")
+    System.setProperty("sun.java2d.uiScale", "1.0")
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
-    var robot = Robot()
-    val createScreenCapture = robot.createScreenCapture(Rectangle(0, 0, 100, 100))
-    val createMultiResolutionScreenCapture = robot.createMultiResolutionScreenCapture(Rectangle(0, 0, 100, 100))
+    val target = File("${System.currentTimeMillis()}.png")
+    val robot = Robot()
 
-    val write = ImageIO.write(createScreenCapture, "jpg", File("test.jpg"))
+    val sizer = Rectangle(0, 0, 2000, 1000);
+    val createScreenCapture = robot.createScreenCapture(sizer)
 
-//    val write2 = ImageIO.write(createMultiResolutionScreenCapture, "jpg", File("test2.jpg"))
+    val createGraphics = createScreenCapture.createGraphics()
+    createGraphics.drawImage(createScreenCapture, 0, 0, null)
+    createGraphics.dispose()
+
+    ImageIO.setUseCache(false)
+    ImageIO.setCacheDirectory(null)
+
+    val write = ImageIO.write(createScreenCapture, "png", target)
     println("robot = ${robot}")
 
 }
