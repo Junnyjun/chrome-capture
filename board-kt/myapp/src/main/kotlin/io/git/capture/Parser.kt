@@ -28,7 +28,12 @@ fun interface Parser {
                 .also { it.parentFile.mkdirs() }
             logger.info("[CONVERT] WRITE PDF")
 
-            val document = Document(com.itextpdf.text.Rectangle(request.target.width.toFloat(), request.target.height.toFloat()))
+            val document = Document(com.itextpdf.text.Rectangle(
+                request.target.width.toFloat(),
+                request.target.height.toFloat()),
+                0.toFloat(), 0.toFloat(), 0.toFloat(), 0.toFloat()
+            )
+
             PdfWriter.getInstance(document, pdfFile.outputStream())
             document.open()
             files.forEachIndexed { index, file ->
