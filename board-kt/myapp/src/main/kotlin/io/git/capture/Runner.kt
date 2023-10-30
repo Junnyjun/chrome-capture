@@ -1,4 +1,6 @@
-import java.util.Scanner
+package io.git.capture
+
+import java.util.*
 import java.util.logging.Logger
 
 private val scanner = Scanner(System.`in`)

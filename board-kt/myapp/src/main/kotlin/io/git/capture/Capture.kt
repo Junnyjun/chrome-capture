@@ -1,3 +1,5 @@
+package io.git.capture
+
 import java.awt.Rectangle
 import java.awt.Robot
 import java.io.File
@@ -10,7 +12,7 @@ fun interface Capture {
     class CaptureUsecase(
         private val robot:Robot = Robot()
 
-    ):Capture{
+    ): Capture {
         private val logger = Logger.getLogger("CAPTURE BOARD")
 
         override fun capture(window: CaptureSizer): File {

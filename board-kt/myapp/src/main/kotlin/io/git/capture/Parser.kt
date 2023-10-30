@@ -1,26 +1,31 @@
+package io.git.capture
+
 import com.itextpdf.text.Document
 import com.itextpdf.text.Image
 import com.itextpdf.text.pdf.PdfWriter
 import java.awt.Rectangle
+import java.awt.event.KeyEvent
 import java.io.File
 import java.nio.file.Paths
 import java.util.logging.Logger
 
 fun interface Parser {
-    fun convert(request:ParserSizer): Unit
+    fun convert(request: ParserSizer): Unit
 
     class ParserUsecase(
     ) : Parser {
         private val logger = Logger.getLogger("TO PDF...")
 
-        override fun convert(request:ParserSizer): Unit {
+        override fun convert(request: ParserSizer): Unit {
             logger.info("[CONVERT] START")
 
             val targets = Paths.get("./target")
+
             val files = targets.toFile().listFiles()!!
                 .sortedBy { it.nameWithoutExtension.toInt() }
 
             val pdfFile = File("./document/${request.fileName}.pdf")
+                .also { it.parentFile.mkdirs() }
             logger.info("[CONVERT] WRITE PDF")
 
             val document = Document(com.itextpdf.text.Rectangle(request.target.width.toFloat(), request.target.height.toFloat()))

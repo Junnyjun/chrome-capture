@@ -1,3 +1,5 @@
+package io.git.capture
+
 import java.io.File
 import java.util.logging.Logger
 
@@ -9,6 +11,8 @@ interface ClearPath {
         override fun clear(): Unit {
             logger.info("[CLEAR PATH] START")
             val targets = File("./target")
+                .also { it.mkdirs() }
+
             val files = targets.listFiles()!!
             files.forEach {
                 it.delete()

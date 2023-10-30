@@ -1,3 +1,5 @@
+package io.git.capture
+
 import java.awt.MouseInfo
 import java.awt.Rectangle
 import java.util.logging.Logger

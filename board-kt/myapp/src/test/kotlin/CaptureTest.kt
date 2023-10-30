@@ -1,5 +1,5 @@
-import Capture.CaptureSizer
-import org.junit.jupiter.api.Assertions
+import io.git.capture.Capture
+import io.git.capture.Capture.CaptureSizer
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.awt.Rectangle
